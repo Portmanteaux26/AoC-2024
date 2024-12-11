@@ -1,14 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import java.io.File;
+import kotlin.math.abs
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+
+fun main() {
+    val totalDist = day01()
+    println(totalDist)
+}
+
+fun day01() : Int {
+
+    val rawInput = File("input01.txt").readLines()
+
+    val leftCol = mutableListOf<String>()
+    val rightCol = mutableListOf<String>()
+    for (line in rawInput) {
+        val pair = line.split("   ")
+        leftCol.add(pair[0])
+        rightCol.add(pair[1])
     }
+    val numIDs = leftCol.size
+    assert(numIDs == rightCol.size && numIDs == rawInput.size)
+
+    leftCol.sort()
+    rightCol.sort()
+
+    var totalDist = 0
+    for (i in 0..<numIDs) {
+        val leftID = leftCol[i].toInt()
+        val rightID = rightCol[i].toInt()
+        val dist = abs(leftID - rightID)
+        totalDist += dist
+    }
+
+    return totalDist
 }
