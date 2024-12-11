@@ -1,4 +1,4 @@
-Advent of Code 2024 repo
+Repo for Advent of Code 2024: https://adventofcode.com/2024
 
 Created as a practice exercise for independent study between semesters and to learn basics of Kotlin.
 
