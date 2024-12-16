@@ -18,7 +18,12 @@ fun safeReports(reports: MutableList<String>): Int {
 
     var safeCount = 0
     for (report in reports) {
-        if (isSafe(report)) {
+        val reportAsList = report.split(" ")
+        val reportInts = mutableListOf<Int>()
+        for (string in reportAsList) {
+            reportInts.add(string.toInt())
+        }
+        if (isSafe(reportInts)) {
             safeCount++
         }
     }
@@ -26,21 +31,15 @@ fun safeReports(reports: MutableList<String>): Int {
     return safeCount
 }
 
-private fun isSafe(report: String): Boolean {
-
-    val reportAsList = report.split(" ")
-    val reportInts = mutableListOf<Int>()
-    for (string in reportAsList) {
-        reportInts.add(string.toInt())
-    }
+private fun isSafe(report: MutableList<Int>): Boolean {
 
     var isIncreasing = false
-    if (reportInts[1] - reportInts[0] >= 0) {
+    if (report[1] - report[0] >= 0) {
         isIncreasing = true
     }
 
-    for (i in 1..<reportAsList.size) {
-        val diff = reportInts[i] - reportInts[i-1]
+    for (i in 1..<report.size) {
+        val diff = report[i] - report[i-1]
         if (abs(diff) > 3 || diff == 0) {
             return false
         }
