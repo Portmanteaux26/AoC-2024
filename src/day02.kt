@@ -40,14 +40,14 @@ private fun isSafe(report: String): Boolean {
     }
 
     for (i in 1..<reportAsList.size) {
-        val diff = abs(reportInts[i] - reportInts[i-1])
-        if (diff > 3 || diff == 0) {
+        val diff = reportInts[i] - reportInts[i-1]
+        if (abs(diff) > 3 || diff == 0) {
             return false
         }
-        if (isIncreasing && reportInts[i] < reportInts[i-1]) {
+        if (isIncreasing && diff < 0) {
             return false
         }
-        if (! isIncreasing && reportInts[i] > reportInts[i-1]) {
+        if (! isIncreasing && diff > 0) {
             return false
         }
     }
