@@ -36,12 +36,9 @@ fun safeReports(reports: MutableList<String>): Int {
 
 private fun isSafe(report: MutableList<Int>): Boolean {
 
-    var isIncreasing = false
-    if (report[1] > report[0]) {
-        isIncreasing = true
-    }
+    val isIncreasing = report[1] > report[0]
 
-    for (i in 1..<report.size) {
+    for (i in 1 until report.size) {
         val diff = report[i] - report[i-1]
         if (abs(diff) > 3 || diff == 0) {
             return false
@@ -59,7 +56,7 @@ private fun isSafe(report: MutableList<Int>): Boolean {
 
 private fun problemDampener(report: MutableList<Int>): Boolean {
 
-    for (i in 0..<report.size) {
+    for (i in 0 until report.size) {
         val newReport = report.toMutableList()
         newReport.removeAt(i)
         if (isSafe(newReport)) {
