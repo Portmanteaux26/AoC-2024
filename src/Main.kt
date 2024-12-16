@@ -1,4 +1,3 @@
 fun main() {
-    println(totalDistance())
-    println(similarityScore())
+    println(day02input())
 }
