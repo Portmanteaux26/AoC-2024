@@ -1,3 +1,4 @@
 fun main() {
-    println(day02input())
+    val reports = day02input()
+    println(safeReports(reports))
 }
