@@ -18,3 +18,7 @@ fun filter(rawInput: String): MutableList<String> {
 
     return instructions
 }
+
+fun totalResults(instructions: MutableList<String>): Int {
+    return 0
+}
