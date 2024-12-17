@@ -12,8 +12,8 @@ fun filter(rawInput: String): MutableList<String> {
     val matches = regex.findAll(rawInput)
 
     val instructions = mutableListOf<String>()
-    matches.forEach {
-        matchResult -> instructions.add(matchResult.value)
+    for (match in matches) {
+        instructions.add(match.value)
     }
 
     return instructions
