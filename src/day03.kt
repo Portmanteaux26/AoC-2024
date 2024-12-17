@@ -20,5 +20,17 @@ fun filter(rawInput: String): MutableList<String> {
 }
 
 fun totalResults(instructions: MutableList<String>): Int {
-    return 0
+
+    var total = 0
+
+    for (instruction in instructions) {
+        val factorStrings = instruction.split(",")
+        val factor1Str = factorStrings[0].filter { it.isDigit() }
+        val factor2Str = factorStrings[1].filter { it.isDigit() }
+        val factor1 = factor1Str.toInt()
+        val factor2 = factor2Str.toInt()
+        total += factor1 * factor2
+    }
+
+    return total
 }
