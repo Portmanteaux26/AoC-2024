@@ -1,4 +1,4 @@
 fun main() {
-    val input = day03Input("input03.txt")
+    val input = day03Input("src/input03.txt")
     println(filter(input))
 }

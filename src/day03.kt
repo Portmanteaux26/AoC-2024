@@ -6,11 +6,15 @@ fun day03Input(path: String): String {
     return rawInput
 }
 
-fun filter(rawInput: String): String {
+fun filter(rawInput: String): MutableList<String> {
 
-    val reg = Regex("mul(.+,.+)")
-    val matches = reg.findAll(rawInput)
-    val instructions = matches.map{it.groupValues}.joinToString()
+    val regex = Regex("""mul\(\d{1,3},\d{1,3}\)""")
+    val matches = regex.findAll(rawInput)
+
+    val instructions = mutableListOf<String>()
+    matches.forEach {
+        matchResult -> instructions.add(matchResult.value)
+    }
 
     return instructions
 }
